@@ -1,0 +1,31 @@
+{
+    "NombreEmpresa": "Cadeteria los electricos",
+    "TelefonoEmpresa": "3814423310",
+    "ListadoDeCadetes": [
+        {
+            "Id": 1,
+            "Nombre": "Tomas",
+            "Direccion": "Diego de villaroel",
+            "Telefono": "3814423310"
+        },
+        {
+            "Id": 2,
+            "Nombre": "Diego",
+            "Direccion": "San Martin 942",
+            "Telefono": "3814567654"
+        },
+        {
+            "Id": 3,
+            "Nombre": "Pablo",
+            "Direccion": "Lomas de tafi",
+            "Telefono": "38187878909"        
+        },
+        {
+            "Id": 4,
+            "Nombre": "Lourdes",
+            "Direccion": "Alderetes",
+            "Telefono": "38189897007"         
+        }
+    ],
+        "ListaDePedidos": []
+}
