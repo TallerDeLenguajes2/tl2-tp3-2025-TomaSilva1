@@ -26,14 +26,14 @@ namespace Pedido
             estado = Estado.asignado;
         }
 
-        public void cambiarEstado(Estado nuevoEstado)
+        public void cambiarEstado(int estado)
         {
-            estado = nuevoEstado;   
+            this.estado = estado;
         }
 
         public void mostrarPedidos(){
             if(estado == Estado.pendiente){
-                Console.WriteLine($"nro: {nro}, desc: {obs}");
+                return Nro;
             }
         }
     }

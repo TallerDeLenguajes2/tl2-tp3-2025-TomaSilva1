@@ -46,12 +46,15 @@ namespace Cadeteria
             listaDePedidos.Add(p);
         }
 
-        public void mostrarCadetes()
+        public List<Cadete> mostrarCadetes()
         {
+            List<Cadete> cadetesActuales = new List<Cadete>();
             foreach (var c in listadoDeCadetes)
             {
-                Console.WriteLine($"ID: {c.Id}, NOMBRE: {c.Nombre}");
+                cadetesActuales.Add(c);
             }
+
+            return cadetesActuales;
         }
 
         
@@ -61,11 +64,6 @@ namespace Cadeteria
             if (cadete != null)
             {
                 p.Cadete = cadete;
-                Console.WriteLine("Cadete Cambiado con exito");
-            }
-            else
-            {
-                Console.WriteLine("Error al reasignar");
             }
         }
 
@@ -94,7 +92,7 @@ namespace Cadeteria
             Console.WriteLine("Promedio de pedidos entregados por cadete: " + (promedio / 4));
         }
 
-        public void jornalACobrar(int id)
+        public float jornalACobrar(int id)
         {
             var cad = listadoDeCadetes.FirstOrDefault(c => c.Id == id);
             if (cad != null)
@@ -102,7 +100,12 @@ namespace Cadeteria
                 var entregados = listaDePedidos.Where(p => p.Cadete.Id == cad.Id && p.Estado == Estado.entregado);
                 int cant = entregados.Count();
 
-                Console.WriteLine("Total a cobrar: "+cant*500);
+                Console.WriteLine("Total a cobrar: " + cant * 500);
+                return (cant * 500);
+            }
+            else
+            {
+                return 0;
             }
         }
 
@@ -113,7 +116,7 @@ namespace Cadeteria
 
             if (cadete == null || pedido == null)
             {
-                Console.WriteLine("Ingrese los datos correctamente.");
+                
             }
             else
             {
