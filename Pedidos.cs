@@ -26,14 +26,20 @@ namespace Pedido
             estado = Estado.asignado;
         }
 
-        public void cambiarEstado(int estado)
+        public void cambiarEstado(int opc)
         {
-            this.estado = estado;
-        }
-
-        public void mostrarPedidos(){
-            if(estado == Estado.pendiente){
-                return Nro;
+            if (opc == 1)
+            {
+                this.estado = Estado.asignado;
+            }else if (opc == 2)
+            {
+                this.estado = Estado.enCamino;
+            }else if (opc == 3)
+            {
+                this.estado = Estado.entregado;
+            }else if (opc == 4)
+            {
+                this.estado = Estado.cancelado;
             }
         }
     }

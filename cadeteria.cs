@@ -1,5 +1,6 @@
 using Cadetes;
 using Pedido;
+using InformeEmpresa;
 
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace Cadeteria
@@ -67,29 +68,29 @@ namespace Cadeteria
             }
         }
 
-        public void informeEmpresa()
+        public Informe informeEmpresa()
         {
             var pedidosEntregados = ListaDePedidos.Where(p => p.Estado == Estado.entregado);
-            Console.WriteLine("La cadeteria Cobra 700$ por cada pedido entregado");
-            Console.WriteLine("500 para cada cadete, 200 para la cadeteria");
+
             int entregados = pedidosEntregados.Count();
             float total = entregados * 200;
 
-            Console.WriteLine("Ganancias totales empresa: " + total);
-
             float promedio = 0;
-            int count;
+            int count = 0;
+
+            List<CadeteInfo> totales = new List<CadeteInfo>();
+
             foreach (var c in ListadoDeCadetes)
             {
                 var entrega = ListaDePedidos.Where(k => k.Cadete.Id == c.Id);
                 count = entrega.Count();
-                Console.WriteLine("Cadete: " + c.Nombre + ", Total a cobrar: " + count * 500);
+                CadeteInfo info = new CadeteInfo(c.Id, count);
                 promedio += count;
-                count = 0;
+                totales.Add(info);
             }
-            
-            Console.WriteLine("-----------------------------------------");
-            Console.WriteLine("Promedio de pedidos entregados por cadete: " + (promedio / 4));
+
+            Informe informe = new Informe(entregados, total, totales, promedio);
+            return informe;
         }
 
         public float jornalACobrar(int id)
